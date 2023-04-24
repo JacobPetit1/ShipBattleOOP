@@ -1,4 +1,4 @@
 # ShipBattleOOP
-Author: Jacob Petit, Matthew Stankevicius, <pablo add your name>
+Author: Jacob Petit, Matthew Stankevicius, Pablo Enriquez
 Application Name: ShipBattle
 // ass bending
