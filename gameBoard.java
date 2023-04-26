@@ -7,7 +7,7 @@ public class gameBoard
     // declare local/private variables
     private int arrWidth;
     private int arrHeight;
-    String[][] array;
+    int[][] array;
 
     // create setter getter so no one can modify
     public void setArrWidth(int width)
@@ -25,10 +25,11 @@ public class gameBoard
     // creates empty array of size arrWidth, arrHeight
     public gameBoard()
     {
-        array = new String[arrWidth][arrHeight];
+        array = new int[arrWidth][arrHeight];
     }
 
     // add methods to place elements at an index
+    public void insertInteger(int xIndex, int yIndex, int element)
     // add method to search index
 
 
