@@ -8,6 +8,7 @@ public class gameBoard
     private int arrWidth;
     private int arrHeight;
     String[][] array;
+
     // create setter getter so no one can modify
     public void setArrWidth(int width)
     {
@@ -17,17 +18,20 @@ public class gameBoard
     {
         arrHeight = height;
     }
+
+    /*
+     *  gameBoard constructor
+     */
+    // creates empty array of size arrWidth, arrHeight
     public gameBoard()
     {
-        // empty initial board call
-        // maybe intentially leave blank because this is not expected
-        // maybe throw error to handle for unexpected
-    }
-    public gameBoard(int width, int height)
-    {
         array = new String[arrWidth][arrHeight];
-        // create array of size width and height
     }
+
+    // add methods to place elements at an index
+    // add method to search index
+
+
     public String toString()
     {
         String arrayString = "";
