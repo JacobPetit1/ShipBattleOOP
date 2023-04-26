@@ -2,9 +2,8 @@
  * Creators: Jake, Pablo, Matt <last names>
  * <MIT LICENSE>
  */
-package src;
 import java.util.*;
-public class Bismarck 
+public class bismarck 
 {
 	// copies one string and returns a copy
 	public static String[][] copyBoard(String[][] arrBase, String[][] self)
