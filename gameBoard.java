@@ -7,6 +7,7 @@ public class gameBoard
     // declare local/private variables
     private int arrWidth;
     private int arrHeight;
+    String[][] array;
     // create setter getter so no one can modify
     public void setArrWidth(int width)
     {
@@ -18,19 +19,27 @@ public class gameBoard
     }
     public gameBoard()
     {
+        // empty initial board call
         // maybe intentially leave blank because this is not expected
         // maybe throw error to handle for unexpected
-        // initial Board call
     }
     public gameBoard(int width, int height)
     {
-        private String[][] array = new String[arrWidth][arrHeight];
+        array = new String[arrWidth][arrHeight];
         // create array of size width and height
     }
-    
     public String toString()
     {
-
+        String arrayString = "";
+        for(int i = 0; i < arrHeight;i++)
+        {
+            arrayString = arrayString + "\n";
+            for(int j = 0; j < arrWidth; j++)
+            {
+                arrayString = arrayString + array[i][j];
+            }
+        }
+        return arrayString;
     }
 
 }
