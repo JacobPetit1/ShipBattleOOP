@@ -31,6 +31,7 @@ public class gameBoard
     }
 
     // method inserts / sets int value at given index
+    // NOTE: index starts at 0 0
     public void insertInteger(int xIndex, int yIndex, int element)
     {
         array[xIndex][yIndex] = element;
@@ -38,11 +39,11 @@ public class gameBoard
     // add method to search index?
 
     // method looks at what the int value is at the given index
+    // NOTE: index starts at 0 0
     public int getElementAtIndex(int xIndex, int yIndex)
     {
         return array[xIndex][yIndex];
     }
-
 
     //@override print method
     public String toString()
