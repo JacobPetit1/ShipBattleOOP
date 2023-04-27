@@ -36,7 +36,6 @@ public class gameBoard
     {
         array[xIndex][yIndex] = element;
     }
-    // add method to search index?
 
     // method looks at what the int value is at the given index
     // NOTE: index starts at 0 0
@@ -44,6 +43,10 @@ public class gameBoard
     {
         return array[xIndex][yIndex];
     }
+
+    // add method to search index?
+    // add method to apply ships -- or make new class that extends this.
+
 
     //@override print method
     public String toString()
@@ -57,6 +60,8 @@ public class gameBoard
                 arrayString = arrayString + array[i][j] + " ";
             }
         }
+        // for formatting, makes a new line for spacing
+        arrayString = arrayString + "\n";
         return arrayString;
     }
 }
