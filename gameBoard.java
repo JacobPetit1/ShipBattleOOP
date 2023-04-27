@@ -22,9 +22,11 @@ public class gameBoard
     /*
      *  gameBoard constructor
      */
-    // creates empty array of size arrWidth, arrHeight
-    public gameBoard()
+    // creates empty array of size width, height
+    public gameBoard(int width, int height)
     {
+        setArrWidth(width);
+        setArrHeight(height);
         array = new int[arrWidth][arrHeight];
     }
 

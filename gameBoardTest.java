@@ -1,10 +1,8 @@
-public class gameBoardTest extends gameBoard
+public class gameBoardTest
 {
     public gameBoardTest()
     {
-        setArrWidth(5);
-        setArrHeight(5);
-        gameBoard board = new gameBoard();
+        gameBoard board = new gameBoard(5,5);
         System.out.print(board);
     }
     public static void main(String[] args)
