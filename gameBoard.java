@@ -42,6 +42,7 @@ public class gameBoard
     }
 
 
+    //@override print method
     public String toString()
     {
         String arrayString = "";
@@ -50,10 +51,9 @@ public class gameBoard
             arrayString = arrayString + "\n";
             for(int j = 0; j < arrWidth; j++)
             {
-                arrayString = arrayString + array[i][j];
+                arrayString = arrayString + array[i][j] + " ";
             }
         }
         return arrayString;
     }
-
 }
