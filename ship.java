@@ -6,11 +6,8 @@
  // NOTE: this does not fully handle all errors
 public class ship 
 {
-    /* TODO: ship integer identifier
-     *      ship head
-     *      ship direction
+    /* TODO: ship direction
      *      ship constructor
-     *      getters setters
      * 
      * 
      */
@@ -19,6 +16,7 @@ public class ship
     private int shipIdentifier;
     private int xHeadIndex, yHeadIndex;
     private int[] head = new int[2];
+    private int shipLength = 3; //  may be subject to change
     
     // getters and setters for the head of the ship
     // and for the index values, but all are private
@@ -53,7 +51,7 @@ public class ship
 
     public ship()
     {
-        // initial ship constructor
+        // blank ship constructor
     }
 
     
