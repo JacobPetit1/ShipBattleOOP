@@ -44,7 +44,7 @@ public class gameBoard
         return array[xIndex][yIndex];
     }
 
-    // add method to search index?
+    // add method to search index? ^
     // add method to apply ships -- or make new class that extends this.
 
 
