@@ -5,6 +5,7 @@
 
 public class gameBoardShip extends gameBoard
 {
+    private gameBoard board;
     /* TODO: make methods to envoke from ship to board
      *  place ship
      *  
@@ -17,8 +18,8 @@ public class gameBoardShip extends gameBoard
         super(0,0);
     }
     // constructor builds a board with width and height
-    public gameBoardShip(int width, int height)
+    public gameBoardShip(gameBoard gameBoard)
     {
-        super(width,height);
+        super(gameBoard.getWidth(),height);
     }
 }

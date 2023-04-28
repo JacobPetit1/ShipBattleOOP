@@ -18,6 +18,14 @@ public class gameBoard
     {
         arrHeight = height;
     }
+    public int getArrWidth()
+    {
+        return arrWidth;
+    }
+    public int getArrHeight()
+    {
+        return arrHeight;
+    }
 
     /*
      *  gameBoard constructor
