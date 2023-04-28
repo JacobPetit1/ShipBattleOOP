@@ -7,7 +7,7 @@ public class gameBoard
     // declare local/private variables
     private int arrWidth;
     private int arrHeight;
-    int[][] array;
+    private int[][] array;
 
     // create setter getter so no one can modify
     public void setArrWidth(int width)
@@ -44,6 +44,10 @@ public class gameBoard
         return array[xIndex][yIndex];
     }
 
+    public int[][] getBoardArray()
+    {
+        return array;
+    }
     // add method to search index? ^
     // add method to apply ships -- or make new class that extends this.
 
