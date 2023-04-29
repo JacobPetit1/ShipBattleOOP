@@ -88,6 +88,19 @@ public class gameJPanel extends JFrame {
 
     }
 
+
+    // MAtt: I will probably delete this main method when I finish the 
+    // @gameBoardShip file so I can start writing a class around this
+    // and that class.
+
+
+    /* Matt: I might write this later.. I will write a menu to have options
+     *  for the game: new game - restarts the game, refresh - repaints but 
+     * doesnt do anything else
+     * 
+     * I will also try to implement a console output to the panel, I am
+     * not entirely sure how to do that but here comes google.
+     */
     public static void main(String[] args) {
 
         gameJPanel game = new gameJPanel();

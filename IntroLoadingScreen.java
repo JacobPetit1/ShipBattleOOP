@@ -43,6 +43,13 @@ public class IntroLoadingScreen extends JFrame implements ActionListener {
         clearButton.setEnabled(false);
     }
 
+
+    /*  this is matt: i say remove this eventually because we do not need
+     * a main method for this, we just create a loading screen object
+     * and we wait until a response from the gameBoardPanel that says the
+     * game is ready to play etc. I just dont see a need for the main method
+     * correct me if i am wrong.
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
