@@ -10,7 +10,7 @@ public class ship
     private int shipIdentifier;
     private int xHeadIndex, yHeadIndex;
     private int[] head = new int[2];
-    private int shipLength; //  may be subject to change
+    private int shipLength;
     private int[] shipArray;
     private int direction;
     

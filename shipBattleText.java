@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class shipBattleText 
 {
+    Scanner input = new Scanner(System.in);
+
     /*  This class will start to build the rules of the game
      *  Starting with initial building the board, probably will 
      * set define the bounds of the board here
@@ -13,8 +17,22 @@ public class shipBattleText
      * 
      */
 
+     public void startGameMessage()
+     {
+        System.out.print("Welcome to shipBattleText... \n"
+                        +"this is your battleShip type game. \n"
+                        +"You will be asked to place your ship, please \n"
+                        +"place this in the grid, then you will take turns \n"
+                        +"guessing where the other ship is and sink them.");
+     }
 
 
 
+
+
+    public void main(String[] args)
+    {
+        startGameMessage();
+    }
 
 }
