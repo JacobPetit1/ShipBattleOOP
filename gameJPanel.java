@@ -1,10 +1,13 @@
 import javax.swing.*;
-
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import java.awt.*;
 
-public class gameJPanel extends JFrame {
+public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
-    private JPanel menu;
+    private JMenuBar menuBar;
 
     private JPanel textPanel;
 
@@ -73,31 +76,72 @@ public class gameJPanel extends JFrame {
         }
 
         textPanel = new JPanel();
+
+        // Create menu bar and menus. 
+        menuBar = new JMenuBar();
+
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setMnemonic(KeyEvent.VK_F);
+        menuBar.add(fileMenu);
+
+        JMenuItem openMenuItem = new JMenuItem("Open", KeyEvent.VK_O);
+        fileMenu.add(openMenuItem);
+
+        JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_S);
+        fileMenu.add(saveMenuItem);
+        fileMenu.addSeparator();
+
+        JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_X);
+        exitMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+        
+        JMenu editMenu = new JMenu("Edit");
+        editMenu.setMnemonic(KeyEvent.VK_E);
+        menuBar.add(editMenu);
+        
+        JMenuItem clearMenuItem = new JMenuItem("Clear", KeyEvent.VK_C);
+        clearMenuItem.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                repaint();
+            }
+        });        
+        editMenu.add(clearMenuItem);
+        add(menuBar, BorderLayout.NORTH);
         // Create the player and computer labels
 
         playerLabel = new JLabel("Player Grid", SwingConstants.CENTER);
 
         computerLabel = new JLabel("Computer Grid", SwingConstants.CENTER);
 
-        // change this once i figure out how to make the menu
-        menu = new JPanel();
 
         // Add components to the content pane
 
         getContentPane().setLayout(new BorderLayout());
 
+        getContentPane().add(menuBar, BorderLayout.NORTH);
+
         getContentPane().add(playerGrid, BorderLayout.WEST);
 
         getContentPane().add(computerGrid, BorderLayout.EAST);
 
-        getContentPane().add(playerLabel, BorderLayout.NORTH);
+        //getContentPane().add(playerLabel, BorderLayout.NORTH);
 
-        getContentPane().add(computerLabel, BorderLayout.SOUTH);
+        //getContentPane().add(computerLabel, BorderLayout.SOUTH);
 
         setVisible(true);
-
     }
 
+    // fill these in later
+    public void actionPerformed(ActionEvent e) {}
+    public void keyPressed(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
 
     // MAtt: I will probably delete this main method when I finish the 
     // @gameBoardShip file so I can start writing a class around this

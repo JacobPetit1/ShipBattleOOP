@@ -26,7 +26,7 @@ public class shipBattleText
                         +"guessing where the other ship is and sink them.");
      }
 
-     public void 
+     
 
 
 
