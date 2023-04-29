@@ -6,6 +6,8 @@ public class gameJPanel extends JFrame {
 
     private JPanel menu;
 
+    private JPanel textPanel;
+
     private JPanel playerGrid;
 
     private JPanel computerGrid;
@@ -15,6 +17,7 @@ public class gameJPanel extends JFrame {
     private JLabel computerLabel;
 
 
+    // gameJPanel constructer
     public gameJPanel() {
 
         super("ShipBattle ");
@@ -23,7 +26,7 @@ public class gameJPanel extends JFrame {
 
         setSize(800, 600);
 
-        setResizable(true);
+        setResizable(false);
 
         setLocationRelativeTo(null);
 
@@ -69,6 +72,7 @@ public class gameJPanel extends JFrame {
 
         }
 
+        textPanel = new JPanel();
         // Create the player and computer labels
 
         playerLabel = new JLabel("Player Grid", SwingConstants.CENTER);
