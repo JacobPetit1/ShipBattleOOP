@@ -30,6 +30,10 @@ public class gameBoard
     /*
      *  gameBoard constructor
      */
+    public gameBoard()
+    {
+        // default left empty with no initialization.
+    }
     // creates empty array of size width, height
     public gameBoard(int width, int height)
     {

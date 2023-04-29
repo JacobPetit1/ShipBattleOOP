@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class gameJPanel extends JFrame {
 
+    private JPanel menu;
+
     private JPanel playerGrid;
 
     private JPanel computerGrid;
@@ -11,6 +13,7 @@ public class gameJPanel extends JFrame {
     private JLabel playerLabel;
 
     private JLabel computerLabel;
+
 
     public gameJPanel() {
 
@@ -72,6 +75,9 @@ public class gameJPanel extends JFrame {
 
         computerLabel = new JLabel("Computer Grid", SwingConstants.CENTER);
 
+        // change this once i figure out how to make the menu
+        menu = new JPanel();
+
         // Add components to the content pane
 
         getContentPane().setLayout(new BorderLayout());
@@ -98,8 +104,9 @@ public class gameJPanel extends JFrame {
      *  for the game: new game - restarts the game, refresh - repaints but 
      * doesnt do anything else
      * 
-     * I will also try to implement a console output to the panel, I am
-     * not entirely sure how to do that but here comes google.
+     * NOTE: with the layout, it does not stack so you cant have the
+     * computer and player lable in the same spots north. like north north 
+     * will throw an error, we need to make a new frame.
      */
     public static void main(String[] args) {
 

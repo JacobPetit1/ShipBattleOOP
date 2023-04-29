@@ -25,7 +25,7 @@ public class gameBoardShip extends gameBoard
     // empty default constructor
     public gameBoardShip()
     {
-        super(0,0);
+        super();
     }
     // constructor builds a board with width and height
     public gameBoardShip(gameBoard gameBoard)
@@ -36,12 +36,26 @@ public class gameBoardShip extends gameBoard
     public void placeShip(ship shipToInsert)
     {
         //places ship but does not handle missing information
-
+        try
+        {
+            
+        }
+        catch(Exception e)
+        {
+            //throw exception or text handle
+        }
     }
     public void placeShip(ship shipToInsert, int headXValue, int headYValue)
     {
         // places ship at x y cord
+        try
+        {
 
+        }
+        catch(Exception e)
+        {
+            //throw exception or text handle
+        }
     }
 
 

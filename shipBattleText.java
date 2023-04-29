@@ -8,7 +8,8 @@ public class shipBattleText
      *  Use the information here to make sure the game works over text
      * then we can transfer this to the JFrame.
      * 
-     * 
+     * Similarly, we can use this for the shipBattle with the jFrame,
+     * just incorporate the text with the Frame.
      * 
      */
 
