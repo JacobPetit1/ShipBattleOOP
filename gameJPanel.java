@@ -7,6 +7,9 @@ import java.awt.*;
 
 public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
+
+    // Maybe create methods to help access some of these?
+
     private JMenuBar menuBar;
 
     private JPanel textPanel;
@@ -19,6 +22,12 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
     private JLabel computerLabel;
 
+    private JTextArea txtArea;
+
+    private JScrollPane scrollPane;
+
+    private final static String newline = "\n";
+
 
     // gameJPanel constructer
     public gameJPanel() {
@@ -27,7 +36,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(800, 600);
+        setSize(1000, 600);
 
         setResizable(false);
 
@@ -75,21 +84,24 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
         }
 
-        textPanel = new JPanel();
-
         // Create menu bar and menus. 
         menuBar = new JMenuBar();
 
-        JMenu fileMenu = new JMenu("File");
-        fileMenu.setMnemonic(KeyEvent.VK_F);
-        menuBar.add(fileMenu);
+        JMenu optionsMenu = new JMenu("Options");
+        optionsMenu.setMnemonic(KeyEvent.VK_F);
+        menuBar.add(optionsMenu);
 
-        JMenuItem openMenuItem = new JMenuItem("Open", KeyEvent.VK_O);
-        fileMenu.add(openMenuItem);
+        JMenuItem newGameMenuItem = new JMenuItem("New Game", KeyEvent.VK_O);
+        newGameMenuItem.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                // restart game here
+            }
+        });
+        optionsMenu.add(newGameMenuItem);
 
         JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_S);
-        fileMenu.add(saveMenuItem);
-        fileMenu.addSeparator();
+        optionsMenu.add(saveMenuItem);
+        optionsMenu.addSeparator();
 
         JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_X);
         exitMenuItem.addActionListener(new ActionListener() {
@@ -97,28 +109,38 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
                 System.exit(0);
             }
         });
-        fileMenu.add(exitMenuItem);
+        optionsMenu.add(exitMenuItem);
         
         JMenu editMenu = new JMenu("Edit");
         editMenu.setMnemonic(KeyEvent.VK_E);
         menuBar.add(editMenu);
         
-        JMenuItem clearMenuItem = new JMenuItem("Clear", KeyEvent.VK_C);
+        // this just clears text
+        JMenuItem clearMenuItem = new JMenuItem("Clear Text", KeyEvent.VK_C);
         clearMenuItem.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent e) 
             {
-                repaint();
+                txtArea.setText(null); // clears out all old text
+                getContentPane().revalidate();
             }
         });        
         editMenu.add(clearMenuItem);
-        add(menuBar, BorderLayout.NORTH);
+        //add(menuBar, BorderLayout.NORTH);
+
+        // makes a text area that outputs stream text to jpanel
+
+        textPanel = new JPanel();
+        txtArea = new JTextArea(10,20);
+        scrollPane = new JScrollPane(txtArea);
+        txtArea.setEditable(false);
+        textPanel.add(txtArea);
+
         // Create the player and computer labels
 
         playerLabel = new JLabel("Player Grid", SwingConstants.CENTER);
 
         computerLabel = new JLabel("Computer Grid", SwingConstants.CENTER);
-
 
         // Add components to the content pane
 
@@ -127,6 +149,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
         getContentPane().add(menuBar, BorderLayout.NORTH);
 
         getContentPane().add(playerGrid, BorderLayout.WEST);
+        getContentPane().add(textPanel, BorderLayout.CENTER);
 
         getContentPane().add(computerGrid, BorderLayout.EAST);
 
@@ -143,23 +166,14 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent e) {}
     public void keyTyped(KeyEvent e) {}
 
-    // MAtt: I will probably delete this main method when I finish the 
-    // @gameBoardShip file so I can start writing a class around this
-    // and that class.
-
-
-    /* Matt: I might write this later.. I will write a menu to have options
-     *  for the game: new game - restarts the game, refresh - repaints but 
-     * doesnt do anything else
-     * 
-     * NOTE: with the layout, it does not stack so you cant have the
-     * computer and player lable in the same spots north. like north north 
-     * will throw an error, we need to make a new frame.
-     */
-    public static void main(String[] args) {
-
+    public void setTextPaneText(String args)
+    {
+        txtArea.setText(args + newline);
+    }
+    public static void main(String[] args) 
+    {
         gameJPanel game = new gameJPanel();
-
+        game.setTextPaneText("Welcome to ShipBattle!!");
     }
 
 }

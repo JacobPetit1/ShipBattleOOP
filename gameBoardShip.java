@@ -8,11 +8,8 @@ public class gameBoardShip extends gameBoard
 
     private gameBoard board;
     private ship shipMemory;
-    /* TODO: make methods to envoke from ship to board
-     *  place ship
-     *  
-     */
 
+    
      public void setGameBoard(gameBoard boardToStore)
      {
         board = boardToStore;
