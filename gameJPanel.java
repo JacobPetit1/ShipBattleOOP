@@ -160,16 +160,19 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
         setVisible(true);
     }
 
-    // fill these in later
-    public void actionPerformed(ActionEvent e) {}
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
-    public void keyTyped(KeyEvent e) {}
+    // abstract methods
+    public void actionPerformed(ActionEvent e) {/*leave empty */}
+    public void keyPressed(KeyEvent e) {/*leave empty */}
+    public void keyReleased(KeyEvent e) {/*leave empty */}
+    public void keyTyped(KeyEvent e) {/*leave empty */}
 
+    // method to accessing the text pane
     public void setTextPaneText(String args)
     {
         txtArea.setText(args + newline);
     }
+
+    
     public static void main(String[] args) 
     {
         gameJPanel game = new gameJPanel();

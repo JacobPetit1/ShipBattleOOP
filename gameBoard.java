@@ -64,6 +64,71 @@ public class gameBoard
     // add method to apply ships -- or make new class that extends this.
 
 
+    // methods to interact with the ship.
+    public void placeShip(ship shipToInsert)
+    {
+        //places ship but does not handle missing information
+        try
+        {
+            int headXCord = shipToInsert.getHeadXIndex();
+            int headYCord = shipToInsert.getHeadYIndex();
+
+            // o vert 1 horz
+
+            if(shipToInsert.getShipDirection()==0)
+            {
+                for(int i = 0; i < shipToInsert.getShipLength(); i++)
+                {
+                    insertInteger(headXCord+i, headYCord, shipToInsert.getShipIdentifier());
+                }
+            }
+            else
+            {
+                for(int i = 0; i < shipToInsert.getShipLength(); i++)
+                {
+                    insertInteger(headXCord, headYCord+i, shipToInsert.getShipIdentifier());
+                }
+            }
+
+        }
+        catch(Exception e)
+        {
+            //throw exception or text handle
+        }
+    }
+    public void placeShip(ship shipToInsert, int headXValue, int headYValue)
+    {
+        // places ship at x y cord
+        shipToInsert.setHeadXIndex(headXValue);
+        shipToInsert.setHeadYIndex(headYValue);
+        try
+        {
+            // o vert 1 horz
+
+            if(shipToInsert.getShipDirection()==0)
+            {
+                for(int i = 0; i < shipToInsert.getShipLength(); i++)
+                {
+                    insertInteger(shipToInsert.getHeadXIndex()+i, shipToInsert.getHeadYIndex(), shipToInsert.getShipIdentifier());
+                }
+            }
+            else
+            {
+                for(int i = 0; i < shipToInsert.getShipLength(); i++)
+                {
+                    insertInteger(shipToInsert.getHeadXIndex(), shipToInsert.getHeadYIndex()+i, shipToInsert.getShipIdentifier());
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            // throw error or text handle
+        }
+    }
+
+
+
+
     //@override print method
     public String toString()
     {

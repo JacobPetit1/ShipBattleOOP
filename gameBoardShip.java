@@ -30,6 +30,10 @@ public class gameBoardShip extends gameBoard
     {
         super(gameBoard.getArrWidth(),gameBoard.getArrHeight());
     }
+    public gameBoardShip(int width, int height)
+    {
+        super(width, height);
+    }
     // default ship placement -- doesnt handle empty information
     public void placeShip(ship shipToInsert)
     {
