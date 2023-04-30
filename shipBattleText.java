@@ -28,11 +28,12 @@ public class shipBattleText
 
      public String startGameMessage()
      {
-        String gameMessage = "Welcome to shipBattleText... \n"
-        +"this is your battleShip type game. \n"
+        String gameMessage = "Welcome to ShipBattle... \n"
+        +"this is your BattleShip type game. \n"
         +"You will be asked to place your ship, please \n"
         +"place this in the grid, then you will take turns \n"
-        +"guessing where the other ship is and sink them. \n";
+        +"guessing where the other ship is and sink them. \n"
+        +"\n";
         
         return gameMessage;
      }
@@ -40,9 +41,9 @@ public class shipBattleText
 
      public String shipPlacementQuery()
      {
-        String placementQuery = "Enter the coordinates as to \n"
-        + "where you would like to place \n"
-        + "your ship... ex: int[xcord] *enter* int[ycord]\n";
+        String placementQuery = "Click where you would like\n"
+        + "to place your ship.\n"
+        + "\n";
 
         return placementQuery;
      }

@@ -167,16 +167,18 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {/*leave empty */}
 
     // method to accessing the text pane
-    public void setTextPaneText(String args)
+    public void printToTextPane(String args)
     {
-        txtArea.setText(args + newline);
+        txtArea.append(args + newline);
     }
 
-    
+
     public static void main(String[] args) 
     {
         gameJPanel game = new gameJPanel();
-        game.setTextPaneText("Welcome to ShipBattle!!");
+        shipBattleText  gameText = new shipBattleText();
+        game.printToTextPane(gameText.startGameMessage());
+        game.printToTextPane(gameText.shipPlacementQuery());
     }
 
 }
