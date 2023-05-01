@@ -65,9 +65,9 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
                 JButton button = new JButton("" + i + j);
                 button.addActionListener(this);
 
-                //button.setName("playerButton" + j + i);
+                // button.setName("playerButton" + j + i);
 
-                //not sure how to use this
+                // not sure how to use this
                 button.putClientProperty("location", new int[] { i, j });
 
                 playerBoardButtons[i][j] = button;
@@ -91,10 +91,10 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
             for (int j = 0; j < 5; j++) {
 
-                JButton button = new JButton(""+i +j);
+                JButton button = new JButton("" + i + j);
                 button.addActionListener(this);
 
-                //button.setName("computerButton" + i + j);
+                // button.setName("computerButton" + i + j);
 
                 button.putClientProperty("location", new int[] { i, j });
 
@@ -105,7 +105,6 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
             }
 
         }
-
 
         // Create menu bar and menus.
         menuBar = new JMenuBar();
@@ -149,8 +148,8 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
         textPanel = new JPanel();
         txtArea = new JTextArea(10, 20);
-        //scrollPane = new JScrollPane(textPanel);
-        //scrollPane.setViewportView(txtArea);
+        // scrollPane = new JScrollPane(textPanel);
+        // scrollPane.setViewportView(txtArea);
         txtArea.setEditable(false);
         textPanel.add(new JScrollPane(txtArea));
 
@@ -178,18 +177,14 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         setVisible(true);
     }
 
-    public void setPlayerShip(int headX, int headY, ship PlayerShip, gameBoard playerGameBoard)
-    {
-        try
-        {
+    public void setPlayerShip(int headX, int headY, ship PlayerShip, gameBoard playerGameBoard) {
+        try {
             PlayerShip.setHeadXIndex(headX);
             PlayerShip.setHeadYIndex(headY);
-        }
-        catch(Exception e)
-        {
-            //invalid position exits the game
+        } catch (Exception e) {
+            // invalid position exits the game
             printToTextPane("an error occured");
-            //restart?
+            // restart?
         }
 
         // vertical direction
@@ -200,13 +195,10 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
     // abstract methods
     public void actionPerformed(ActionEvent e) {
-        for(int i = 0; i < 5; i++)
-        {
-            for(int j = 0; j < 5; j++)
-            {
-                if(e.getSource()==playerBoardButtons[i][j])
-                {
-                    // take the name and 
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (e.getSource() == playerBoardButtons[i][j]) {
+                    // take the name and
                     printToTextPane(playerBoardButtons[i][j].getText());
                 }
             }
@@ -228,13 +220,19 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     }
 
     public static void main(String[] args) {
+        int red = 80;
+        int green = 156;
+        int blue = 228;
+        Color backgroundColor = new Color(red, green, blue);
+        IntroLoadingScreen introLoadingScreen = new IntroLoadingScreen();
+        introLoadingScreen.getContentPane().setBackground(backgroundColor);
         gameJPanel game = new gameJPanel();
         shipBattleText gameText = new shipBattleText();
         gameText.initializeShips();
         game.printToTextPane(gameText.startGameMessage());
         game.printToTextPane(gameText.shipPlacementQuery());
 
-        //TODO: place ship
+        // TODO: place ship
         // place CPU Ship and hide it
         // initiate guess for player and cpu
     }

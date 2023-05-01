@@ -67,15 +67,5 @@ public class IntroLoadingScreen extends JFrame implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        // Create a new IntroLoadingScreen object and set its background color using RGB
-        // values
-        int red = 80;
-        int green = 156;
-        int blue = 228;
-        Color backgroundColor = new Color(red, green, blue);
-        IntroLoadingScreen introLoadingScreen = new IntroLoadingScreen();
-        introLoadingScreen.getContentPane().setBackground(backgroundColor);
-    }
-
+   
 }
