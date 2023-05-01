@@ -5,8 +5,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.*;
 
-public class gameJPanel extends JFrame implements ActionListener, KeyListener{
-
+public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
     // Maybe create methods to help access some of these?
 
@@ -26,8 +25,11 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
     private JScrollPane scrollPane;
 
-    private final static String newline = "\n";
+    private static JButton[][] playerBoardButtons;
 
+    private static JButton[][] computerBoardButtons;
+
+    private final static String newline = "\n";
 
     // gameJPanel constructer
     public gameJPanel() {
@@ -48,17 +50,26 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
     private void GamePanel() {
 
-        // Create the player grid panel
+        // Create the player grid panel and naming every button then adding them to
+        // array to allow them to be accessed later
 
         playerGrid = new JPanel(new GridLayout(5, 5));
 
+        playerBoardButtons = new JButton[5][5];
+
         playerGrid.setPreferredSize(new Dimension(350, 350));
 
-        for (int row = 0; row < 5; row++) {
+        for (int i = 0; i < 5; i++) {
 
-            for (int col = 0; col < 5; col++) {
+            for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
+
+                button.setName("playerButton" + i + j);
+
+                button.putClientProperty("location", new int[] { i, j });
+
+                playerBoardButtons[i][j] = button;
 
                 playerGrid.add(button);
 
@@ -66,25 +77,33 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
         }
 
-        // Create the computer grid panel
+        // Create the computer grid panel and making buttons with names then adding it
+        // to an arrray
 
         computerGrid = new JPanel(new GridLayout(5, 5));
 
+        computerBoardButtons = new JButton[5][5];
+
         computerGrid.setPreferredSize(new Dimension(350, 350));
 
-        for (int row = 0; row < 5; row++) {
+        for (int i = 0; i < 5; i++) {
 
-            for (int col = 0; col < 5; col++) {
+            for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
+
+                button.setName("computerButton" + i + j);
+
+                button.putClientProperty("location", new int[] { i, j });
+
+                computerBoardButtons[i][j] = button;
 
                 computerGrid.add(button);
 
             }
 
         }
-
-        // Create menu bar and menus. 
+        // Create menu bar and menus.
         menuBar = new JMenuBar();
 
         JMenu optionsMenu = new JMenu("Options");
@@ -92,7 +111,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
         menuBar.add(optionsMenu);
 
         JMenuItem newGameMenuItem = new JMenuItem("New Game", KeyEvent.VK_O);
-        newGameMenuItem.addActionListener(new ActionListener(){
+        newGameMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // restart game here
             }
@@ -110,28 +129,26 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
             }
         });
         optionsMenu.add(exitMenuItem);
-        
+
         JMenu editMenu = new JMenu("Edit");
         editMenu.setMnemonic(KeyEvent.VK_E);
         menuBar.add(editMenu);
-        
+
         // this just clears text
         JMenuItem clearMenuItem = new JMenuItem("Clear Text", KeyEvent.VK_C);
-        clearMenuItem.addActionListener(new ActionListener() 
-        {
-            public void actionPerformed(ActionEvent e) 
-            {
+        clearMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 txtArea.setText(null); // clears out all old text
                 getContentPane().revalidate();
             }
-        });        
+        });
         editMenu.add(clearMenuItem);
-        //add(menuBar, BorderLayout.NORTH);
+        // add(menuBar, BorderLayout.NORTH);
 
         // makes a text area that outputs stream text to jpanel
 
         textPanel = new JPanel();
-        txtArea = new JTextArea(10,20);
+        txtArea = new JTextArea(10, 20);
         scrollPane = new JScrollPane(txtArea);
         txtArea.setEditable(false);
         textPanel.add(txtArea);
@@ -153,30 +170,34 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener{
 
         getContentPane().add(computerGrid, BorderLayout.EAST);
 
-        //getContentPane().add(playerLabel, BorderLayout.NORTH);
+        // getContentPane().add(playerLabel, BorderLayout.NORTH);
 
-        //getContentPane().add(computerLabel, BorderLayout.SOUTH);
+        // getContentPane().add(computerLabel, BorderLayout.SOUTH);
 
         setVisible(true);
     }
 
     // abstract methods
-    public void actionPerformed(ActionEvent e) {/*leave empty */}
-    public void keyPressed(KeyEvent e) {/*leave empty */}
-    public void keyReleased(KeyEvent e) {/*leave empty */}
-    public void keyTyped(KeyEvent e) {/*leave empty */}
+    public void actionPerformed(ActionEvent e) {
+        /* leave empty */}
+
+    public void keyPressed(KeyEvent e) {
+        /* leave empty */}
+
+    public void keyReleased(KeyEvent e) {
+        /* leave empty */}
+
+    public void keyTyped(KeyEvent e) {
+        /* leave empty */}
 
     // method to accessing the text pane
-    public void printToTextPane(String args)
-    {
+    public void printToTextPane(String args) {
         txtArea.append(args + newline);
     }
 
-
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         gameJPanel game = new gameJPanel();
-        shipBattleText  gameText = new shipBattleText();
+        shipBattleText gameText = new shipBattleText();
         game.printToTextPane(gameText.startGameMessage());
         game.printToTextPane(gameText.shipPlacementQuery());
     }
