@@ -24,8 +24,6 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
     private JTextArea txtArea;
 
-    private JScrollPane scrollPane;
-
     private static JButton[][] playerBoardButtons;
 
     private static JButton[][] computerBoardButtons;
@@ -64,11 +62,12 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
             for (int j = 0; j < 5; j++) {
 
-                JButton button = new JButton();
+                JButton button = new JButton("" + i + j);
                 button.addActionListener(this);
 
                 //button.setName("playerButton" + j + i);
 
+                //not sure how to use this
                 button.putClientProperty("location", new int[] { i, j });
 
                 playerBoardButtons[i][j] = button;
@@ -92,12 +91,8 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
             for (int j = 0; j < 5; j++) {
 
-                JButton button = new JButton();
-                button.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-
-                    }
-                });
+                JButton button = new JButton(""+i +j);
+                button.addActionListener(this);
 
                 //button.setName("computerButton" + i + j);
 
@@ -110,6 +105,8 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
             }
 
         }
+
+
         // Create menu bar and menus.
         menuBar = new JMenuBar();
 
@@ -155,7 +152,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         //scrollPane = new JScrollPane(textPanel);
         //scrollPane.setViewportView(txtArea);
         txtArea.setEditable(false);
-        textPanel.add(txtArea);
+        textPanel.add(new JScrollPane(txtArea));
 
         // Create the player and computer labels
 
@@ -181,22 +178,28 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         setVisible(true);
     }
 
-    public void setPlayerShip()
+    public void setPlayerShip(int headX, int headY, ship PlayerShip, gameBoard playerGameBoard)
     {
-        JButton button;
-        if(count==0){
-            new ActionListener() {
-                public void actionPerformed(ActionEvent e)
-                {
-                    
-                }
-            };
+        try
+        {
+            PlayerShip.setHeadXIndex(headX);
+            PlayerShip.setHeadYIndex(headY);
         }
+        catch(Exception e)
+        {
+            //invalid position exits the game
+            printToTextPane("an error occured");
+            //restart?
+        }
+
+        // vertical direction
+
+        PlayerShip.setShipDirection(0);
+        playerGameBoard.placeShip(PlayerShip);
     }
 
     // abstract methods
-    public void actionPerformed(ActionEvent e) {
-        /* leave empty */}
+    public void actionPerformed(ActionEvent e) {}
 
     public void keyPressed(KeyEvent e) {
         /* leave empty */}
