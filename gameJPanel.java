@@ -3,9 +3,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.*;
 
-public class gameJPanel extends JFrame implements ActionListener, KeyListener {
+public class gameJPanel extends JFrame implements ActionListener, KeyListener, MouseListener {
 
     // Maybe create methods to help access some of these?
 
@@ -64,6 +66,15 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
             for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
+                button.addMouseListener(new MouseListener() {
+                    public void mouseClicked(MouseEvent e){
+                        printToTextPane(button.getName());
+                    }
+                    public void mouseEntered(MouseEvent e){}
+                    public void mouseExited(MouseEvent e){}
+                    public void mousePressed(MouseEvent e){}
+                    public void mouseReleased(MouseEvent e){}
+                });
 
                 button.setName("playerButton" + i + j);
 
@@ -177,6 +188,10 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         setVisible(true);
     }
 
+    public void setPlayerShip()
+    {
+
+    }
     // abstract methods
     public void actionPerformed(ActionEvent e) {
         /* leave empty */}
@@ -190,6 +205,13 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
         /* leave empty */}
 
+    public void mouseClicked(MouseEvent e){
+        /*leave empty  */
+    }
+    public void mouseEntered(MouseEvent e){}
+    public void mouseExited(MouseEvent e){}
+    public void mousePressed(MouseEvent e){}
+    public void mouseReleased(MouseEvent e){}
     // method to accessing the text pane
     public void printToTextPane(String args) {
         txtArea.append(args + newline);
@@ -198,6 +220,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     public static void main(String[] args) {
         gameJPanel game = new gameJPanel();
         shipBattleText gameText = new shipBattleText();
+        gameText.initializeShips();
         game.printToTextPane(gameText.startGameMessage());
         game.printToTextPane(gameText.shipPlacementQuery());
     }

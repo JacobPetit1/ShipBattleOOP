@@ -58,7 +58,7 @@ public class shipBattleText
      }
      public void playerGameBoard()
      {
-        print(shipPlacementQuery());
+        //print(shipPlacementQuery());
         try
         {
             PlayerShip.setHeadXIndex(input.nextInt());
