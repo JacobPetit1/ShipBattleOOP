@@ -32,7 +32,7 @@ public class IntroLoadingScreen extends JFrame implements ActionListener {
 
         // Create the image label
         JLabel imageLabel = new JLabel();
-        ImageIcon imageIcon = new ImageIcon("path/to/image.jpg"); // Replace with the actual path to your image file
+        ImageIcon imageIcon = new ImageIcon("Battleship.png");
         Image image = imageIcon.getImage();
         Image scaledImage = image.getScaledInstance(400, 200, Image.SCALE_SMOOTH);
         ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
