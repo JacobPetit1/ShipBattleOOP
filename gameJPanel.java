@@ -8,6 +8,8 @@ import java.awt.*;
 public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     // Maybe create methods to help access some of these?
 
+    public int count;
+    
     private JMenuBar menuBar;
 
     private JPanel textPanel;
@@ -65,12 +67,12 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
                 JButton button = new JButton();
                 button.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-
+                        printToTextPane(button.getName());
                     }
                 }
                 );
 
-                button.setName("playerButton" + i + j);
+                button.setName("playerButton" + j + i);
 
                 button.putClientProperty("location", new int[] { i, j });
 
