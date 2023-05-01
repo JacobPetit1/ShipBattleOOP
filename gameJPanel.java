@@ -206,7 +206,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
             {
                 if(e.getSource()==playerBoardButtons[i][j])
                 {
-                    // take the name and 
+                    // you should store the name and use this when you loop through the button array
                     printToTextPane(playerBoardButtons[i][j].getText());
                 }
             }
