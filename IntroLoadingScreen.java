@@ -1,8 +1,8 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -23,6 +23,9 @@ public class IntroLoadingScreen extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(600, 400));
         setResizable(false);
+
+        // Set the background color to white by default
+        getContentPane().setBackground(Color.WHITE);
 
         // Create the title label
         label = new JLabel("ShipBattle");
@@ -59,11 +62,20 @@ public class IntroLoadingScreen extends JFrame implements ActionListener {
         if (e.getSource() == startButton) {
             // Open the Battleship game window
             dispose(); // Close the start screen
-            new IntroLoadingScreen();
+            new gameJPanel();
+
         }
     }
 
     public static void main(String[] args) {
-        new IntroLoadingScreen();
+        // Create a new IntroLoadingScreen object and set its background color using RGB
+        // values
+        int red = 80;
+        int green = 156;
+        int blue = 228;
+        Color backgroundColor = new Color(red, green, blue);
+        IntroLoadingScreen introLoadingScreen = new IntroLoadingScreen();
+        introLoadingScreen.getContentPane().setBackground(backgroundColor);
     }
+
 }
