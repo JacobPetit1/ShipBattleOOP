@@ -199,7 +199,19 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     }
 
     // abstract methods
-    public void actionPerformed(ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < 5; j++)
+            {
+                if(e.getSource()==playerBoardButtons[i][j])
+                {
+                    // take the name and 
+                    printToTextPane(playerBoardButtons[i][j].getText());
+                }
+            }
+        }
+    }
 
     public void keyPressed(KeyEvent e) {
         /* leave empty */}
