@@ -9,7 +9,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     // Maybe create methods to help access some of these?
 
     public int count;
-    
+
     private JMenuBar menuBar;
 
     private JPanel textPanel;
@@ -65,14 +65,9 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
             for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
-                button.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        printToTextPane(button.getName());
-                    }
-                }
-                );
+                button.addActionListener(this);
 
-                button.setName("playerButton" + j + i);
+                //button.setName("playerButton" + j + i);
 
                 button.putClientProperty("location", new int[] { i, j });
 
@@ -104,7 +99,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
                     }
                 });
 
-                button.setName("computerButton" + i + j);
+                //button.setName("computerButton" + i + j);
 
                 button.putClientProperty("location", new int[] { i, j });
 
@@ -188,7 +183,15 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
     public void setPlayerShip()
     {
-
+        JButton button;
+        if(count==0){
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e)
+                {
+                    
+                }
+            };
+        }
     }
 
     // abstract methods
@@ -215,6 +218,10 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         gameText.initializeShips();
         game.printToTextPane(gameText.startGameMessage());
         game.printToTextPane(gameText.shipPlacementQuery());
+
+        //TODO: place ship
+        // place CPU Ship and hide it
+        // initiate guess for player and cpu
     }
 
 }
