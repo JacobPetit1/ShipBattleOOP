@@ -229,7 +229,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
         txtArea.append(args + newline);
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         int red = 80;
         int green = 156;
         int blue = 228;
