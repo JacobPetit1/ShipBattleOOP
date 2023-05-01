@@ -24,8 +24,6 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
     private JTextArea txtArea;
 
-    private JScrollPane scrollPane;
-
     private static JButton[][] playerBoardButtons;
 
     private static JButton[][] computerBoardButtons;
@@ -93,12 +91,8 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
 
             for (int j = 0; j < 5; j++) {
 
-                JButton button = new JButton();
-                button.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-
-                    }
-                });
+                JButton button = new JButton(""+i +j);
+                button.addActionListener(this);
 
                 //button.setName("computerButton" + i + j);
 
@@ -205,8 +199,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     }
 
     // abstract methods
-    public void actionPerformed(ActionEvent e) {
-        /* leave empty */}
+    public void actionPerformed(ActionEvent e) {}
 
     public void keyPressed(KeyEvent e) {
         /* leave empty */}
