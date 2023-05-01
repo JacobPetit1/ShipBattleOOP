@@ -3,12 +3,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
 import java.awt.*;
 
-public class gameJPanel extends JFrame implements ActionListener, KeyListener, MouseListener {
-
+public class gameJPanel extends JFrame implements ActionListener, KeyListener {
     // Maybe create methods to help access some of these?
 
     private JMenuBar menuBar;
@@ -66,15 +63,12 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
             for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
-                button.addMouseListener(new MouseListener() {
-                    public void mouseClicked(MouseEvent e){
-                        printToTextPane(button.getName());
+                button.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+
                     }
-                    public void mouseEntered(MouseEvent e){}
-                    public void mouseExited(MouseEvent e){}
-                    public void mousePressed(MouseEvent e){}
-                    public void mouseReleased(MouseEvent e){}
-                });
+                }
+                );
 
                 button.setName("playerButton" + i + j);
 
@@ -102,14 +96,11 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
             for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
-                button.addMouseListener(new MouseListener() {
-                    public void mouseClicked(MouseEvent e){
-                        printToTextPane(button.getName());
+                button.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+
                     }
-                    public void mouseEntered(MouseEvent e){}
-                    public void mouseExited(MouseEvent e){}
-                    public void mousePressed(MouseEvent e){}
-                    public void mouseReleased(MouseEvent e){}});
+                });
 
                 button.setName("computerButton" + i + j);
 
@@ -195,7 +186,7 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
 
     public void setPlayerShip()
     {
-        
+
     }
 
     // abstract methods
@@ -211,13 +202,6 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
     public void keyTyped(KeyEvent e) {
         /* leave empty */}
 
-    public void mouseClicked(MouseEvent e){
-        /*leave empty  */
-    }
-    public void mouseEntered(MouseEvent e){}
-    public void mouseExited(MouseEvent e){}
-    public void mousePressed(MouseEvent e){}
-    public void mouseReleased(MouseEvent e){}
     // method to accessing the text pane
     public void printToTextPane(String args) {
         txtArea.append(args + newline);
