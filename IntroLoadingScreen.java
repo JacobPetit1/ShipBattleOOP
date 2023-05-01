@@ -1,60 +1,69 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class IntroLoadingScreen extends JFrame implements ActionListener {
-    private JButton clearButton;
-    private JPanel squarePanel;
 
-    public void BlueWindow() {
-        // Set up the window
-        setTitle("Blue Window");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(400, 400));
+    private static final long serialVersionUID = 1L;
+    private JLabel label;
+    private JButton startButton;
+    private JPanel panel;
 
-        // Create the square panel and add it to the window
-        squarePanel = new JPanel() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(Color.WHITE);
-                g.fillRect(100, 100, 200, 200);
-            }
-        };
-        getContentPane().add(squarePanel, BorderLayout.CENTER);
+    public IntroLoadingScreen() {
+        super("ShipBattle");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(600, 400));
+        setResizable(false);
 
-        // Create the clear button and add it to the window
-        clearButton = new JButton("Clear");
-        clearButton.addActionListener(this);
-        getContentPane().add(clearButton, BorderLayout.SOUTH);
+        // Create the title label
+        label = new JLabel("ShipBattle");
+        label.setFont(new Font("Arial", Font.BOLD, 40));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        getContentPane().add(label, BorderLayout.NORTH);
 
-        // Set the window background color to blue
-        getContentPane().setBackground(Color.BLUE);
+        // Create the image label
+        JLabel imageLabel = new JLabel();
+        ImageIcon imageIcon = new ImageIcon("path/to/image.jpg"); // Replace with the actual path to your image file
+        Image image = imageIcon.getImage();
+        Image scaledImage = image.getScaledInstance(400, 200, Image.SCALE_SMOOTH);
+        ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+        imageLabel.setIcon(scaledImageIcon);
+        imageLabel.setHorizontalAlignment(JLabel.CENTER);
+        getContentPane().add(imageLabel, BorderLayout.CENTER);
 
-        // Show the window
+        // Create the start button
+        startButton = new JButton("Start Game");
+        startButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        startButton.addActionListener(this);
+
+        // Create the panel to hold the start button
+        panel = new JPanel();
+        panel.add(startButton);
+        getContentPane().add(panel, BorderLayout.SOUTH);
+
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
-        // Clear the square and the button
-        squarePanel.repaint();
-        clearButton.setEnabled(false);
+        if (e.getSource() == startButton) {
+            // Open the Battleship game window
+            dispose(); // Close the start screen
+            new IntroLoadingScreen();
+        }
     }
 
-
-    /*  this is matt: i say remove this eventually because we do not need
-     * a main method for this, we just create a loading screen object
-     * and we wait until a response from the gameBoardPanel that says the
-     * game is ready to play etc. I just dont see a need for the main method
-     * correct me if i am wrong.
-     */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new IntroLoadingScreen();
-            }
-        });
+        new IntroLoadingScreen();
     }
 }
