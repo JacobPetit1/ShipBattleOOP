@@ -102,6 +102,14 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
             for (int j = 0; j < 5; j++) {
 
                 JButton button = new JButton();
+                button.addMouseListener(new MouseListener() {
+                    public void mouseClicked(MouseEvent e){
+                        printToTextPane(button.getName());
+                    }
+                    public void mouseEntered(MouseEvent e){}
+                    public void mouseExited(MouseEvent e){}
+                    public void mousePressed(MouseEvent e){}
+                    public void mouseReleased(MouseEvent e){}});
 
                 button.setName("computerButton" + i + j);
 
@@ -128,10 +136,6 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
             }
         });
         optionsMenu.add(newGameMenuItem);
-
-        JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_S);
-        optionsMenu.add(saveMenuItem);
-        optionsMenu.addSeparator();
 
         JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_X);
         exitMenuItem.addActionListener(new ActionListener() {
@@ -160,7 +164,8 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
 
         textPanel = new JPanel();
         txtArea = new JTextArea(10, 20);
-        scrollPane = new JScrollPane(txtArea);
+        //scrollPane = new JScrollPane(textPanel);
+        //scrollPane.setViewportView(txtArea);
         txtArea.setEditable(false);
         textPanel.add(txtArea);
 
@@ -190,8 +195,9 @@ public class gameJPanel extends JFrame implements ActionListener, KeyListener, M
 
     public void setPlayerShip()
     {
-
+        
     }
+
     // abstract methods
     public void actionPerformed(ActionEvent e) {
         /* leave empty */}
